@@ -1,0 +1,12 @@
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Application\bin\Debug\net6.0\Directory.Identity.Application.deps.json
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Application\bin\Debug\net6.0\Directory.Identity.Application.dll
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Application\bin\Debug\net6.0\Directory.Identity.Application.pdb
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Application\obj\Debug\net6.0\Directory.Identity.Application.csproj.AssemblyReference.cache
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Application\obj\Debug\net6.0\Directory.Identity.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Application\obj\Debug\net6.0\Directory.Identity.Application.AssemblyInfoInputs.cache
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Application\obj\Debug\net6.0\Directory.Identity.Application.AssemblyInfo.cs
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Application\obj\Debug\net6.0\Directory.Identity.Application.csproj.CoreCompileInputs.cache
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Application\obj\Debug\net6.0\Directory.Identity.Application.dll
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Application\obj\Debug\net6.0\refint\Directory.Identity.Application.dll
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Application\obj\Debug\net6.0\Directory.Identity.Application.pdb
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Application\obj\Debug\net6.0\ref\Directory.Identity.Application.dll
