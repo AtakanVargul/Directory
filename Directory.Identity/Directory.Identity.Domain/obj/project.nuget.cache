@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "dTTf5nMmHNgUJluV4EWkwIUvV3t315xFmeaveRAxBazF2Vo+uA+CYXZM2siDhw44UmTO+Kj1qkm3g2zWeg6gZg==",
+  "success": true,
+  "projectFilePath": "C:\\MineReposs\\Externals\\SSTTEKAssessment\\Directory\\Directory.Identity\\Directory.Identity.Domain\\Directory.Identity.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Atakan\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.6\\microsoft.aspnetcore.app.ref.6.0.6.nupkg.sha512",
+    "C:\\Users\\Atakan\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.6\\microsoft.windowsdesktop.app.ref.6.0.6.nupkg.sha512",
+    "C:\\Users\\Atakan\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.6\\microsoft.netcore.app.ref.6.0.6.nupkg.sha512"
+  ],
+  "logs": []
+}
