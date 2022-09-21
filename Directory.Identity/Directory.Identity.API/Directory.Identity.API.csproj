@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -13,5 +13,11 @@
     <PackageReference Include="Microsoft.Identity.Web" Version="1.16.0"/>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Directory.Identity.Application\Directory.Identity.Application.csproj" />
+		<ProjectReference Include="..\Directory.Identity.Domain\Directory.Identity.Domain.csproj" />
+		<ProjectReference Include="..\Directory.Identity.Infrastructure\Directory.Identity.Infrastructure.csproj" />
+	</ItemGroup>
 
 </Project>

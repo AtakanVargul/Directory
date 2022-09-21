@@ -10,3 +10,8 @@ C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.
 C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Infrastructure\obj\Debug\net6.0\refint\Directory.Identity.Infrastructure.dll
 C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Infrastructure\obj\Debug\net6.0\Directory.Identity.Infrastructure.pdb
 C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Infrastructure\obj\Debug\net6.0\ref\Directory.Identity.Infrastructure.dll
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Infrastructure\bin\Debug\net6.0\Directory.Identity.Application.dll
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Infrastructure\bin\Debug\net6.0\Directory.Identity.Domain.dll
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Infrastructure\bin\Debug\net6.0\Directory.Identity.Application.pdb
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Infrastructure\bin\Debug\net6.0\Directory.Identity.Domain.pdb
+C:\MineReposs\Externals\SSTTEKAssessment\Directory\Directory.Identity\Directory.Identity.Infrastructure\obj\Debug\net6.0\Directory.Identity.Infrastructure.csproj.CopyComplete
