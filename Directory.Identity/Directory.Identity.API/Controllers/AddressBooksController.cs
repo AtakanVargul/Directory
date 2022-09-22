@@ -12,14 +12,14 @@ namespace Directory.Identity.API.Controllers;
 
 public class AddressBooksController : ApiControllerBase
 {
-    [HttpGet("{addressBookId}")]
+    [HttpGet("{addressBookId}/detail")]
     public async Task<ActionResult<AddressBookDetailDto>> GetAsync(Guid addressBookId)
     {
         return await Mediator.Send(new GetAddressBookQuery { Id = addressBookId });
     }
 
     [HttpGet("{userId}")]
-    public async Task<List<AddressBookDto>> GetAllAsync(Guid userId)
+    public async Task<List<AddressBookDto>> GetAllAsync([FromRoute]Guid userId)
     {
         return await Mediator.Send(new GetAllAddressBooksQuery { UserId = userId });
     }

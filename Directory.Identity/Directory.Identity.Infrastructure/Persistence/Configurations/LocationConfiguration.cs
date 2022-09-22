@@ -15,5 +15,6 @@ public class LocationConfiguration : IEntityTypeConfiguration<Location>
         builder.Property(u => u.Street).HasMaxLength(50);
         builder.Property(u => u.Neighbourhood).HasMaxLength(50);
         builder.Property(u => u.Zip).HasMaxLength(50);
+        builder.Property(u => u.OpenAddress).HasMaxLength(250);
     }
 }

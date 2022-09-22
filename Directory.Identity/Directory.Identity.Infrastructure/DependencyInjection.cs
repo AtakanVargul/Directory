@@ -13,7 +13,6 @@ using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Directory.Identity.Infrastructure.Authorization;
-using Directory.Identity.Application.Commons.Models.EventBusConfiguration;
 using Directory.Identity.Application.Commons.Models.IdentityConfiguration;
 
 namespace Directory.Identity.Infrastructure;
@@ -47,6 +46,7 @@ public static class DependencyInjection
     {
         services.AddIdentity<User, IdentityRole<Guid>>()
             .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddPasswordValidator<PasswordValidatorService>()
             .AddDefaultTokenProviders();
 
         var identitySettings = new IdentitySettings();

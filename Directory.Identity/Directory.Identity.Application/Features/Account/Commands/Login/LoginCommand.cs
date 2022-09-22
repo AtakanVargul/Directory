@@ -9,7 +9,7 @@ namespace Directory.Identity.Application.Features.Account.Commands.Login;
 
 public class LoginCommand : IRequest<LoginResponse>
 {
-    public string Username { get; set; }
+    public string PhoneNumber { get; set; }
     public string Password { get; set; }
 }
 
@@ -30,9 +30,9 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, LoginResponse>
 
     public async Task<LoginResponse> Handle(LoginCommand request, CancellationToken cancellationToken)
     {
-        var result = await _signInManager.PasswordSignInAsync(request.Username, request.Password, false, false);
+        var result = await _signInManager.PasswordSignInAsync(request.PhoneNumber, request.Password, false, false);
 
-        var user = await _userManager.FindByNameAsync(request.Username);
+        var user = await _userManager.FindByNameAsync(request.PhoneNumber);
 
         await ValidateSignInResult(result);
 

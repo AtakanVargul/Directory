@@ -12,5 +12,7 @@ public class AddressBookConfiguration : IEntityTypeConfiguration<AddressBook>
         builder.Property(u => u.LastName).HasMaxLength(50).IsRequired();
         builder.Property(u => u.Firm).HasMaxLength(50);
         builder.Property(u => u.LastModifiedBy).HasMaxLength(100);
+
+        builder.Ignore(u => u.DomainEvents);
     }
 }

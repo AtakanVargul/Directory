@@ -31,7 +31,7 @@ public class JwtHelper : IJwtHelper
             new Claim(JwtRegisteredClaimNames.Jti, await _options.NonceGenerator()),
             new Claim(JwtRegisteredClaimNames.Sid, await _options.NonceGenerator()),
             new Claim(JwtRegisteredClaimNames.Iat, new DateTimeOffset(now).ToUniversalTime().ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64),
-            new Claim(ClaimTypes.GivenName, user.UserName),
+            new Claim(ClaimTypes.Email, user.Email),
             new Claim(ClaimTypes.MobilePhone, user.PhoneNumber),
         };
 
@@ -66,6 +66,7 @@ public class JwtHelper : IJwtHelper
             notBefore: now,
             expires: now.Add(expireIn ?? _options.Expiration),
             signingCredentials: _options.SigningCredentials);
+
         var encodedJwt = new JwtSecurityTokenHandler().WriteToken(jwt);
 
         await _signInManager.SignInWithClaimsAsync(user, false, claims);

@@ -21,15 +21,21 @@ public class CreateAddressBookCommandHandler : IRequestHandler<CreateAddressBook
 {
     private readonly UserManager<User> _userManager;
     private readonly IRepository<AddressBook> _repository;
+    private readonly IRepository<Location> _locationRepository;
+    private readonly IRepository<Contact> _contactRepository;
     private readonly IRepository<User> _userRepository;
 
     public CreateAddressBookCommandHandler(UserManager<User> userManager,
         IRepository<AddressBook> repository,
-        IRepository<User> userRepository)
+        IRepository<User> userRepository,
+        IRepository<Contact> contactRepository,
+        IRepository<Location> locationRepository)
     {
         _userManager = userManager;
         _repository = repository;
         _userRepository = userRepository;
+        _contactRepository= contactRepository;
+        _locationRepository= locationRepository;
     }
 
     public async Task<Unit> Handle(CreateAddressBookCommand command, CancellationToken cancellationToken)
@@ -41,29 +47,40 @@ public class CreateAddressBookCommandHandler : IRequestHandler<CreateAddressBook
             throw new NotFoundException(nameof(User));
         }
 
+        var Location = new Location
+        {
+            Country = command.Location.Country,
+            City = command.Location.City,
+            State = command.Location.State,
+            Neighbourhood = command.Location.Neighbourhood,
+            Street = command.Location.Street,
+            OpenAddress = command.Location.OpenAddress,
+            Zip = command.Location.Zip,
+            CreatedBy = command.UserId.ToString()
+        };
+        await _locationRepository.AddAsync(Location);
+
+
+        var Contact = new Contact
+        {
+            EmailAdress = command.Contact.EmailAdress,
+            PhoneNumber = command.Contact.PhoneNumber,
+            CreatedBy = command.UserId.ToString(),
+            Location  = Location
+
+        };
+        await _contactRepository.AddAsync(Contact);
+
+
         var entity = new AddressBook
         {
             UserId = command.UserId,
             Firm = command.Firm,
             LastName = command.LastName,
             Name = command.Name,
-            Contact = new Contact
-            {
-                EmailAdress = command.Contact.EmailAdress,
-                PhoneNumber = command.Contact.PhoneNumber,
-                Location = new Location
-                {
-                    Country = command.Location.Country,
-                    City = command.Location.City,
-                    State = command.Location.State,
-                    Neighbourhood = command.Location.Neighbourhood,
-                    Street = command.Location.Street,
-                    OpenAddress = command.Location.OpenAddress,
-                    Zip = command.Location.Zip
-                }
-            }
+            CreatedBy = command.UserId.ToString(),
+            Contact = Contact
         };
-
         await _repository.AddAsync(entity);
 
         return Unit.Value;

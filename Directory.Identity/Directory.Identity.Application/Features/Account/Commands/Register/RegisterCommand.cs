@@ -13,7 +13,8 @@ public class RegisterCommand : IRequest<RegisterResponse>
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
-    public string UserName { get; set; }
+    public string PhoneNumber { get; set; }
+    public string Email { get; set; }
     public string Password { get; set; }
 }
 
@@ -31,19 +32,23 @@ public class RegisterCommandHandler : IRequestHandler<RegisterCommand, RegisterR
 
     public async Task<RegisterResponse> Handle(RegisterCommand command, CancellationToken cancellationToken)
     {
-        var emailUser = await _userManager.FindByNameAsync(command.UserName);
+        var emailUser = await _userManager.FindByNameAsync(command.PhoneNumber);
         if (emailUser is not null)
         {
-            throw new AlreadyInUseException(nameof(command.UserName));
+            throw new AlreadyInUseException(nameof(User));
         }
 
         var user = new User
         {
             FirstName = command.FirstName,
             LastName = command.LastName,
-            UserName = command.UserName,
+            UserName = command.PhoneNumber,
+            PhoneNumber = command.PhoneNumber,
+            PhoneNumberConfirmed = true,
+            Email = command.Email,
+            EmailConfirmed = true,
             CreateDate = DateTime.UtcNow,
-            RecordStatus = RecordStatus.Active,
+            RecordStatus = RecordStatus.Active
         };
 
         var result = await _userManager.CreateAsync(user, command.Password);

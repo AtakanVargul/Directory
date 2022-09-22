@@ -6,12 +6,12 @@ public class LoginCommandValidator : AbstractValidator<LoginCommand>
 {
     public LoginCommandValidator()
     {
-        RuleFor(x => x.Username)
-            .NotNull().MinimumLength(10).MaximumLength(20)
-            .WithMessage("Invalid username.");
+        RuleFor(x => x.PhoneNumber)
+            .NotNull().MaximumLength(15)
+            .WithMessage("Invalid PhoneNumber.");
 
         RuleFor(x => x.Password)
-            .NotNull().MinimumLength(6).MaximumLength(6)
+            .NotNull().Length(6)
             .WithMessage("Invalid password.");
     }
 }

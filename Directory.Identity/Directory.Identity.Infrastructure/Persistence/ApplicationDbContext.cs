@@ -39,8 +39,8 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<Guid>, 
             switch (entry.State)
             {
                 case EntityState.Added:
-                entry.Entity.CreateDate = DateTimeOffset.UtcNow;
                 entry.Entity.RecordStatus = RecordStatus.Active;
+                entry.Entity.CreateDate = DateTimeOffset.UtcNow;
                 break;
 
                 case EntityState.Modified:
