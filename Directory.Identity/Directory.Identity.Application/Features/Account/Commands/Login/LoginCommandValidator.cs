@@ -1,11 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluentValidation;
 
 namespace Directory.Identity.Application.Features.Account.Commands.Login;
 
-internal class LoginCommandValidator
+public class LoginCommandValidator : AbstractValidator<LoginCommand>
 {
+    public LoginCommandValidator()
+    {
+        RuleFor(x => x.Username)
+            .NotNull().MinimumLength(10).MaximumLength(20)
+            .WithMessage("Invalid username.");
+
+        RuleFor(x => x.Password)
+            .NotNull().MinimumLength(6).MaximumLength(6)
+            .WithMessage("Invalid password.");
+    }
 }

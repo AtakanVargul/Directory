@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Directory.Identity.Infrastructure.Authorization;
 using Directory.Identity.Application.Commons.Models.EventBusConfiguration;
+using Directory.Identity.Application.Commons.Models.IdentityConfiguration;
 
 namespace Directory.Identity.Infrastructure;
 
@@ -111,7 +112,6 @@ public static class DependencyInjection
         }).AddJwtBearer(options =>
         {
             options.TokenValidationParameters = tokenValidationParameters;
-
             options.Events = new JwtBearerEvents
             {
                 OnChallenge = (context) =>
@@ -131,19 +131,17 @@ public static class DependencyInjection
 
     public static void AddMasstransitService(this IServiceCollection services, IConfiguration configuration)
     {
-        var settings = new EventBusSettings();
-        configuration.GetSection(nameof(EventBusSettings)).Bind(settings);
-
         services.AddMassTransit(x =>
         {
             x.UsingRabbitMq((context, cfg) =>
             {
-                cfg.Host(new Uri($"rabbitmq://{settings.Host}/"),
-                     h =>
-                     {
-                         h.Username(settings.Username);
-                         h.Password(settings.Password);
-                     });
+                cfg.Host("localhost", "/", h =>
+                {
+                    h.Username("guest");
+                    h.Password("guest");
+                });
+
+                cfg.ConfigureEndpoints(context);
             });
         });
     }

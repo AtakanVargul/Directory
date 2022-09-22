@@ -5,7 +5,7 @@ namespace Directory.Identity.Application.Commons.Exceptions;
 public class ValidationException : ApiException
 {
     public ValidationException()
-        : base(ErrorCode.ValidationError, "One or more validation errors occurred.")
+        : base(ApiErrorCode.ValidationError, "One or more validation errors occurred.")
     {
         Errors = new Dictionary<string, string[]>();
     }

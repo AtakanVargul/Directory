@@ -3,6 +3,7 @@ using Directory.Identity.Application.Commons.Models.Persistence;
 using Directory.Identity.Domain.Entities;
 using MassTransit;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
@@ -10,9 +11,8 @@ using System.Reflection;
 
 namespace Directory.Identity.Infrastructure.Persistence;
 
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
 {
-
     public DbSet<AddressBook> AddressBook { get; set; }
     public DbSet<Contact> Contact { get; set; }
     public DbSet<Location> Location { get; set; }
@@ -169,7 +169,7 @@ public class ApplicationDbContext : DbContext
 
     private static void SetTableNames(ModelBuilder builder)
     {
-        builder.Entity<IdentityUser<Guid>>().ToTable("User", "Identity");
+        builder.Entity<User>().ToTable("User", "Identity");
         builder.Entity<IdentityRole<Guid>>().ToTable("Role", "Identity");
         builder.Entity<IdentityRoleClaim<Guid>>().ToTable("RoleClaim", "Identity");
         builder.Entity<IdentityUserToken<Guid>>().ToTable("UserToken", "Identity");

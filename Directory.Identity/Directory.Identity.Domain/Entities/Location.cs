@@ -9,6 +9,7 @@ public class Location : AuditableEntity
     public string Country { get; set; }
     public string City { get; set; }
     public string State { get; set; }
+    public string Neighbourhood { get; set; }
     public string Street { get; set; }
     public string OpenAddress { get; set; }
     public string Zip { get; set; }

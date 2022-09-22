@@ -13,8 +13,7 @@ public class User : IdentityUser<Guid>
     public DateTimeOffset UpdateDate { get; set; }
     public string LastModifiedBy { get; set; }
     public RecordStatus RecordStatus { get; set; }
-    public AddressBook AddressBook { get; set; }
-    public ICollection<AddressBook> AddressBooks { get; set; }
+    public virtual ICollection<AddressBook> AddressBooks { get; set; }
 
     public override string ToString()
     {

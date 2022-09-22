@@ -12,5 +12,8 @@ public class AddressBook : AuditableEntity, ITrackChange, IHasDomainEvent
     public string Firm { get; set; }
     public Contact Contact { get; set; }
     public Guid ContactId { get; set; }
+    public Guid UserId { get; set; }
     public List<DomainEvent> DomainEvents { get; set; } = new();
+
+    public virtual User User { get; set; }
 }

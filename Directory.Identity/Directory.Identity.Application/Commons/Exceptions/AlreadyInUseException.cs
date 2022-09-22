@@ -1,8 +1,7 @@
-﻿
-namespace Directory.Identity.Application.Commons.Exceptions;
+﻿namespace Directory.Identity.Application.Commons.Exceptions;
 
 public class AlreadyInUseException : ApiException
 {
-    public AlreadyInUseException()
-        : base(ApiErrorCode.AlreadyInUse, $"Mail already taken!") { }
+    public AlreadyInUseException(string userName)
+        : base(ApiErrorCode.AlreadyInUse, $"\"{userName}\" already taken!") { }
 }

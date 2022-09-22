@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Directory.Identity.Application.Commons.Models.AccountModels;
+using Directory.Identity.Application.Features.Account.Commands.Login;
+using Directory.Identity.Application.Features.Account.Commands.Register;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Directory.Identity.API.Controllers;
 
@@ -12,14 +15,8 @@ public class AccountController : ApiControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<LoginResponse>> LoginAsync(LoginUserCommand command)
+    public async Task<ActionResult<LoginResponse>> LoginAsync(LoginCommand command)
     {
         return await Mediator.Send(command);
-    }
-
-    [HttpPost("reset-password")]
-    public async Task ResetPasswordAsync(ResetPasswordCommand command)
-    {
-        await Mediator.Send(command);
     }
 }
