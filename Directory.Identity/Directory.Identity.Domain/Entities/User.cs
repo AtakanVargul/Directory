@@ -1,4 +1,5 @@
 ﻿
+using Directory.Identity.Application.Commons.Models.Persistence;
 using Directory.Identity.Domain.DomainEvents;
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -10,6 +11,8 @@ public class User : IdentityUser<Guid>, IHasDomainEvent
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }
+    public string Email { get; set; }
+    public string Password { get; set; }
     public DateTimeOffset CreateDate { get; set; }
     public DateTimeOffset UpdateDate { get; set; }
     public string LastModifiedBy { get; set; }

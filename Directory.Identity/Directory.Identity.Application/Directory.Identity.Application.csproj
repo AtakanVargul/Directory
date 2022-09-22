@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Features\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.2.2" />
     <PackageReference Include="MassTransit" Version="8.0.6" />
@@ -21,6 +17,10 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Directory.Identity.Domain\Directory.Identity.Domain.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Features\" />
 	</ItemGroup>
 	
 </Project>
