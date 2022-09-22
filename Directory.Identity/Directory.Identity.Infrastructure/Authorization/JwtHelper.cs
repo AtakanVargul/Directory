@@ -1,5 +1,4 @@
 ﻿using Directory.Identity.Application.Commons.Interfaces;
-using Directory.Identity.Application.Commons.Models.Authorization;
 using Directory.Identity.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using System.IdentityModel.Tokens.Jwt;
@@ -11,10 +10,10 @@ public class JwtHelper : IJwtHelper
 {
     private readonly TokenProviderOptions _options;
     private readonly UserManager<User> _userManager;
-    private readonly RoleManager<Role> _roleManager;
+    private readonly RoleManager<IdentityRole<Guid>> _roleManager;
     private readonly SignInManager<User> _signInManager;
 
-    public JwtHelper(TokenProviderOptions options, UserManager<User> um, RoleManager<Role> rm, SignInManager<User> sm)
+    public JwtHelper(TokenProviderOptions options, UserManager<User> um, RoleManager<IdentityRole<Guid>> rm, SignInManager<User> sm)
     {
         _options = options;
         _userManager = um;
@@ -32,8 +31,8 @@ public class JwtHelper : IJwtHelper
             new Claim(JwtRegisteredClaimNames.Jti, await _options.NonceGenerator()),
             new Claim(JwtRegisteredClaimNames.Sid, await _options.NonceGenerator()),
             new Claim(JwtRegisteredClaimNames.Iat, new DateTimeOffset(now).ToUniversalTime().ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64),
-            new Claim(ClaimKey.UserName, user.UserName),
-            new Claim(ClaimKey.UserFullName, user.ToString()),
+            new Claim(ClaimTypes.GivenName, user.UserName),
+            new Claim(ClaimTypes.MobilePhone, user.PhoneNumber),
         };
 
         foreach (var roleName in await _userManager.GetRolesAsync(user))
@@ -60,7 +59,6 @@ public class JwtHelper : IJwtHelper
             claims.AddRange(userClaims);
         }
 
-        // Create the JWT and write it to a string
         var jwt = new JwtSecurityToken(
             issuer: _options.Issuer,
             audience: _options.Audience,

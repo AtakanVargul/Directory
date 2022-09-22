@@ -224,6 +224,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "EntityFramework": {
+              "target": "Package",
+              "version": "[6.4.4, )"
+            },
             "MassTransit.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[7.3.1, )"

@@ -1,5 +1,4 @@
-﻿
-namespace Directory.Identity.Application.Commons.Interfaces;
+﻿namespace Directory.Identity.Application.Commons.Interfaces;
 
 public interface ICurrentUserService
 {

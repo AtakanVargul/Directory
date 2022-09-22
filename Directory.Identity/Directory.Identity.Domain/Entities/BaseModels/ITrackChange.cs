@@ -1,5 +1,4 @@
-﻿
-namespace Directory.Identity.Application.Commons.Models.Persistence;
+﻿namespace Directory.Identity.Application.Commons.Models.Persistence;
 
 public interface ITrackChange
 {

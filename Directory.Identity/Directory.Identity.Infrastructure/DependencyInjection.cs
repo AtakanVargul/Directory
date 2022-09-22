@@ -1,5 +1,4 @@
 ﻿using Directory.Identity.Application.Commons.Interfaces;
-using Directory.Identity.Application.Commons.Models.IdentityConfiguration;
 using Directory.Identity.Domain.Entities;
 using Directory.Identity.Infrastructure.Persistence;
 using Directory.Identity.Infrastructure.Services;

@@ -3,7 +3,6 @@ using Directory.Identity.Application.Commons.Models.Persistence;
 using Directory.Identity.Domain.Entities;
 using MassTransit;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
@@ -11,22 +10,25 @@ using System.Reflection;
 
 namespace Directory.Identity.Infrastructure.Persistence;
 
-public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>
+public class ApplicationDbContext : DbContext
 {
-    public DbSet<User> User { get; set; }
+
+    public DbSet<AddressBook> AddressBook { get; set; }
+    public DbSet<Contact> Contact { get; set; }
+    public DbSet<Location> Location { get; set; }
 
 
     private readonly IDomainEventService _domainEventService;
     private readonly ICurrentUserService _currentUserService;
     private readonly IBus _bus;
 
-    public ApplicationDbContext(IDomainEventService domainEventService
-                            , ICurrentUserService currentUserService
+    public ApplicationDbContext(ICurrentUserService currentUserService,
+        IDomainEventService domainEventService
                             , IBus bus
                             , DbContextOptions options) : base(options)
     {
-        _domainEventService = domainEventService;
         _currentUserService = currentUserService;
+        _domainEventService = domainEventService;
         _bus = bus;
     }
 
@@ -37,15 +39,16 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<Guid>, 
             switch (entry.State)
             {
                 case EntityState.Added:
-                entry.Entity.CreatedBy = _currentUserService.UserId.ToString();
                 entry.Entity.CreateDate = DateTimeOffset.UtcNow;
                 entry.Entity.RecordStatus = RecordStatus.Active;
                 break;
 
                 case EntityState.Modified:
-                entry.Entity.LastModifiedBy = !string.IsNullOrWhiteSpace(entry.Entity.LastModifiedBy)
-                    ? entry.Entity.LastModifiedBy
-                    : _currentUserService.UserId.ToString();
+                entry.Entity.UpdateDate = DateTimeOffset.UtcNow;
+                break;
+
+                case EntityState.Deleted:
+                entry.Entity.RecordStatus = RecordStatus.Passive;
                 entry.Entity.UpdateDate = DateTimeOffset.UtcNow;
                 break;
             }
@@ -166,7 +169,7 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<Guid>, 
 
     private static void SetTableNames(ModelBuilder builder)
     {
-        builder.Entity<User>().ToTable("User", "Identity");
+        builder.Entity<IdentityUser<Guid>>().ToTable("User", "Identity");
         builder.Entity<IdentityRole<Guid>>().ToTable("Role", "Identity");
         builder.Entity<IdentityRoleClaim<Guid>>().ToTable("RoleClaim", "Identity");
         builder.Entity<IdentityUserToken<Guid>>().ToTable("UserToken", "Identity");

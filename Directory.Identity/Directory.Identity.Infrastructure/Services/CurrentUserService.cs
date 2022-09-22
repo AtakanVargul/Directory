@@ -1,4 +1,4 @@
-﻿using Directory.Identity.Application.Commons.Interfaces;
+using Directory.Identity.Application.Commons.Interfaces;
 
 namespace Directory.Identity.Infrastructure.Services;
 
